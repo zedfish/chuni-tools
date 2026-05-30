@@ -25,7 +25,7 @@ mkcert -cert-file cert.pem -key-file key.pem localhost
 cd ..
 ```
 
-**Init Repo**
+**Init Repo** <br>
 Install the required packages and initialize a .env file
 ```sh
 npm install
@@ -36,7 +36,7 @@ bun install
 cp .env.development.example .env.development
 ```
 
-**Run Dev Environment**
+**Run Dev Environment** <br>
 ```sh
 npm run dev
 # OR
@@ -44,5 +44,5 @@ bun dev
 ```
 chuni-tools should be running on localhost and can be accessed at `https://localhost:5173`. You may get a warning about insecure certificate, you can safely ignore it.
 
-**Production Environment**
+**Production Environment** <br>
 Deployment of the production environment is handled by github actions defined in .github
