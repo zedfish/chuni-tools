@@ -14,7 +14,7 @@ The chart constant data aggregated from the Official [Chunithm Music Data](https
 
 The original project by Dogeon188 has no explicit license. Technically I'm violating copyright law so I'll try to get in contact with them to sort this out.
 
-## Developement
+## Development
 
 **Setup https certificate** <br>
 chuni-tools can only be used with https. Install [mkcert](https://github.com/FiloSottile/mkcert) and run the following.
