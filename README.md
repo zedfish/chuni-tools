@@ -1,21 +1,23 @@
 # Chunithm Tools
 
-For more information please refer to [this page](https://dogeon188.github.io/chuni-tools/?lang=en_US)
+For more information please refer to [this page](https://zedfish.github.io/chuni-tools/?lang=en_US)
 
-若要取得更多資訊，請參考[此頁面](https://dogeon188.github.io/chuni-tools/?lang=zh_TW)
+若要取得更多資訊，請參考[此頁面](https://zedfish.github.io/chuni-tools/?lang=zh_TW)
 
-## Credits & about this project
+## Credits
 
-This project is a remake of [chuni_new_intl_viewer](https://github.com/Dogeon188/chuni_new_intl_viewer). The old project is deprecated, please don't mind those dirty codes.
+This project is a fork of [Dogeon188's chuni-tools](https://github.com/Dogeon188/chuni-tools). The project seems to no longer be maintained so I decided to fork and maintain my own version.
 
-This project is heavily inspired by [@kyroslee/chuni_intl_viewer](https://github.com/kyroslee/chuni_intl_viewer) and [@myjian/mai-tools](https://github.com/myjian/mai-tools).
+The chart constant data aggregated from the Official [Chunithm Music Data](https://chunithm.sega.jp/storage/json/music.json) and [Tachi](https://github.com/zkldi/Tachi).
 
-The chart constant data is from [CHUNITHM譜面定数メインフレーム](https://twitter.com/RCMF_chunithm).
+## License
 
-## Dev
+The original project by Dogeon188 has no explicit license. Technically I'm violating copyright law so I'll try to get in contact with them to sort this out.
+
+## Developement
 
 **Setup https certificate** <br>
-chuni-tools can only be used with https. Install a tool such as [mkcert](https://github.com/FiloSottile/mkcert) and run the following.
+chuni-tools can only be used with https. Install [mkcert](https://github.com/FiloSottile/mkcert) and run the following.
 ```sh
 mkdir .cert
 cd .cert
@@ -24,32 +26,23 @@ cd ..
 ```
 
 **Init Repo**
+Install the required packages and initialize a .env file
 ```sh
 npm install
 # OR
 bun install
+
+# Init a .env.development file
+cp .env.development.example .env.development
 ```
-**Build scripts** <br>
-Due to technical limitations, you still need to manually build the bookmarklet script separately with the following command
-```sh
-npm run build:scripts
-# OR 
-bun build:scripts
-```
-The scripts will be generated at `./build/scripts/`.
 
 **Run Dev Environment**
-```
+```sh
 npm run dev
 # OR
 bun dev
 ```
 chuni-tools should be running on localhost and can be accessed at `https://localhost:5173`. You may get a warning about insecure certificate, you can safely ignore it.
 
-**Build Production Environment**
-```sh
-npm run build
-# OR
-bun run build
-```
-then GitHub Pages will handle the rest.
+**Production Environment**
+Deployment of the production environment is handled by github actions defined in .github

@@ -2,68 +2,49 @@ import { paraglideVitePlugin } from '@inlang/paraglide-js'
 import { sveltekit } from '@sveltejs/kit/vite'
 import tailwindcss from '@tailwindcss/vite'
 import fs from 'node:fs'
-import { defineConfig } from 'vitest/config'
-import { viteDefine } from './vite.common.config.js'
+import { defineConfig, loadEnv} from 'vite'
+
+const env = loadEnv(process.env.ENV!, process.cwd(), '');
+
+export const viteDefine = {
+	__ENV__: JSON.stringify(process.env.ENV || 'development'),
+	__INTL_VERSION__: JSON.stringify('xversex'),
+	__JP_VERSION__: JSON.stringify('xversex'),
+	__APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+    __HOST__: JSON.stringify(env.VITE_HOST),
+    __PORT__: Number(env.VITE_PORT),
+}
 
 const serverConfig =
-	process.env.ENV === 'development'
-		? {
-				cors: {
-					origin: '*',
-					credentials: true
-				},
-				fs: {
-					allow: ['..']
-				},
-				hmr: {
-					overlay: false
-				},
-				https: {
-					key: fs.readFileSync('./.cert/key.pem'),
-					cert: fs.readFileSync('./.cert/cert.pem')
-				}
-			}
-		: {}
+    env.ENV === 'development'
+        ? {
+            host: env.VITE_HOST,
+            port: Number(env.VITE_PORT),
+            cors: {
+                origin: '*',
+                credentials: true
+            },
+            fs: {
+                allow: ['..']
+            },
+            https: {
+                key: fs.readFileSync('./.cert/key.pem'),
+                cert: fs.readFileSync('./.cert/cert.pem')
+            }
+        }
+        : {}
 
 export default defineConfig({
-	assetsInclude: ['**/*.md'],
-	define: viteDefine,
-	plugins: [
-		paraglideVitePlugin({
-			project: './i18n/project.inlang',
-			outdir: './src/lib/paraglide',
-			strategy: ['cookie', 'baseLocale']
-		}),
-		tailwindcss(),
-		sveltekit()
-	],
-	server: serverConfig,
-	test: {
-		projects: [
-			{
-				extends: './vite.config.ts',
-				test: {
-					name: 'client',
-					environment: 'browser',
-					browser: {
-						enabled: true,
-						provider: 'playwright',
-						instances: [{ browser: 'chromium' }]
-					},
-					include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
-					exclude: ['src/lib/server/**'],
-					setupFiles: ['./vitest-setup-client.ts']
-				}
-			},
-			{
-				extends: './vite.config.ts',
-				test: {
-					name: 'server',
-					environment: 'node',
-					include: ['src/**/*.{test,spec}.{js,ts}'],
-					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
-				}
-			}
-		]
-	}
+    assetsInclude: ['**/*.md'],
+    define: viteDefine,
+    plugins: [
+        paraglideVitePlugin({
+            project: './i18n/project.inlang',
+            outdir: './src/lib/paraglide',
+            strategy: ['cookie', 'baseLocale']
+        }),
+        tailwindcss(),
+        sveltekit()
+    ],
+    server: serverConfig,
 })

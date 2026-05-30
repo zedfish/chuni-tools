@@ -1,8 +1,8 @@
 export function getScriptBaseUrl() {
     if (__ENV__ === "development") {
-        return "https://localhost:5173"
+        return `https://${__HOST__}:${__PORT__}`
     }
-    return "https://dogeon188.github.io/chuni-tools"
+    return "https://zedfish.github.io/chuni-tools"
 }
 
 export function isMobile() {

@@ -5,6 +5,8 @@ declare global {
 	const __INTL_VERSION__: string
 	const __JP_VERSION__: string
 	const __APP_VERSION__: string
+	const __HOST__: string
+	const __PORT__: string
 
 	type CWRPayload<PayloadType> = {
 		target?: string

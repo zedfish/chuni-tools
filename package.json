@@ -3,7 +3,7 @@
 	"version": "2.0.2",
 	"type": "module",
 	"scripts": {
-		"dev": "npm run dev:scripts && npm run dev:app",
+		"dev": "npm run prepare && npm run dev:scripts && npm run dev:app",
 		"dev:app": "ENV=development vite dev",
 		"dev:scripts": "ENV=development vite build --config vite.scripts.config.ts",
 		"build": "ENV=production npm run prepare && npm run build:paraglide && npm run build:scripts && npm run build:app",
@@ -11,7 +11,6 @@
 		"build:app": "ENV=production vite build",
 		"build:scripts": "ENV=production vite build --config vite.scripts.config.ts",
 		"build:paraglide": "ENV=production npx @inlang/paraglide-js compile --project ./i18n/project.inlang --outdir ./src/lib/paraglide",
-		"build:data": "bun run build-data.ts",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

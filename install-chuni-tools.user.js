@@ -12,7 +12,7 @@
 	'use strict'
 	const s = document.createElement('script')
 	s.src =
-		'https://dogeon188.github.io/chuni-tools/scripts/chuni-tools.js?t=' +
+		'https://zedfish.github.io/chuni-tools/scripts/chuni-tools.js?t=' +
 		Math.floor(Date.now() / 60000)
 	s.type = 'module'
 	document.body.append(s)

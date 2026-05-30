@@ -2,7 +2,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { glob } from 'glob'
 import path from 'node:path'
 import { defineConfig } from 'vite'
-import { viteDefine } from './vite.common.config.js'
+import { viteDefine } from './vite.config.js'
 
 // Get all TypeScript files in src/scripts
 const scriptEntries = glob
