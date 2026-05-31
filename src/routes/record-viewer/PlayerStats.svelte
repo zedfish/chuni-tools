@@ -63,14 +63,6 @@
 					{new Date().toLocaleDateString()}
 				</span>
 
-				<!-- New Version B20 -->
-				<span class="text-right text-textc-info">
-					{m['viewer.stats.current20']()}
-				</span>
-				<span class="text-left">
-					{floorToFixed(calcBestN(newVersionB20, 20) / 100, 4)}
-				</span>
-
 				<!-- Old Version B30 -->
 				<span class="text-right text-textc-info">
 					{m['viewer.stats.old30']()}
@@ -79,21 +71,19 @@
 					{floorToFixed(calcBestN(oldVersionB30, 30) / 100, 4)}
 				</span>
 
-				{#if $_page === 'best'}
-					<!-- Play Count -->
-					<span class="text-right text-textc-info">
-						{m['viewer.stats.play_count']()}
-					</span>
-					<span class="text-left">{$playerStats.playCount} </span>
-				{:else if $_page === 'current' || $_page === 'recent'}
-					<!-- Recent B30 -->
-					<span class="text-right text-textc-info">
-						{m['viewer.stats.recent30']()}
-					</span>
-					<span class="text-left">
-						{floorToFixed(calcBestN(recentB30, 30) / 100, 4)}
-					</span>
-				{/if}
+				<!-- New Version B20 -->
+				<span class="text-right text-textc-info">
+					{m['viewer.stats.new20']()}
+				</span>
+				<span class="text-left">
+					{floorToFixed(calcBestN(newVersionB20, 20) / 100, 4)}
+				</span>
+
+				<!-- Play Count -->
+				<span class="text-right text-textc-info">
+					{m['viewer.stats.play_count']()}
+				</span>
+				<span class="text-left">{$playerStats.playCount} </span>
 			</div>
 		</div>
 	{:else}

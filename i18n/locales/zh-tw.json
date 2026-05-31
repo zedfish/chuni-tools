@@ -34,7 +34,7 @@
 		"title": "CHUNI TOOLS 查分器",
 		"tabs": {
 			"best": "BEST",
-			"current": "CURRENT",
+			"new": "CURRENT",
 			"recent": "RECENT",
 			"old": "OLD"
 		},
@@ -83,7 +83,7 @@
 		},
 		"stats": {
 			"generated_at": "生成時間",
-			"current20": "新曲B20",
+			"new20": "新曲B20",
 			"old30": "舊曲B30",
 			"play_count": "遊玩次數",
 			"recent30": "近期B30"

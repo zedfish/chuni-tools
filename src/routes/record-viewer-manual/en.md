@@ -11,8 +11,8 @@ Here is a brief manual for the CHUNI TOOLS Record Viewer. The tool is designed t
 Your play records are displayed in a table format, with 3 different tabs available (① in the above image):
 
 - **BEST**: Displays your best scores for each song and difficulty.
-- **CURRENT**: Shows the best 20 records for the latest version of CHUNITHM.
-- **RECENT**: Displays your recent 50 records.
+- **NEW**: Shows the best 20 records for scores from the latest version of CHUNITHM.
+- **OLD**: Shows the best 30 records for scores from any previous version of CHUNITHM.
 
 Each row (⑤ above) representing a single song & difficulty, contains the following information:
 
@@ -34,10 +34,9 @@ You can click on the table header (④ above) to **sort the records by the selec
 This section (③ above) displays your overall player statistics, including:
 
 - Your player name, nameplates, and current rating.
-- **Current B20**: Average rating for best 20 records in latest version.
-- **Old B30**: Average rating for best 20 records in the previous version.
+- **NEW B20**: Average rating for best 20 records in latest version.
+- **Old B30**: Average rating for best 30 records in the previous version.
 - **Play Count**: Total number of plays. (Only displays in BEST tab.)
-- **Recent B30**: Average rating for best 30 records out of your last 50 plays. (Only displays in CURRENT and RECENT tabs.)
 - **Rank/Clear Counts**: Distribution of your ranks/clears (AJ/FC) across all plays. Note that the displayed rank count accumulated, meaning it's calculated based on all records higher than the selected rank.
 
 Optionally (when OVER POWER display is enabled), you can also see your total OVER POWER score and the current progress towards maximum OVER POWER. For detailed information on OVER POWER, please refer to [this unofficial guide](https://chunithm.org/intermediate/rating/#overpower-op) or [this document](https://wikiwiki.jp/chunithmwiki/レーティング・OVER%20POWER).

@@ -70,6 +70,7 @@ export const recentRecord = DerivedStream(
 				return noUpdate
 			}
 		}
+		console.log(rawRecentRecord)
 		return parseRecord(rawRecentRecord, $constData)
 	},
 	[]
@@ -160,6 +161,8 @@ export const bestRecord = DerivedStream(
 		}
 
 		logHandle.remove()
+		
+		console.log(rawBestRecord)
 
 		return parseRecord(rawBestRecord, $constData, true)
 	},

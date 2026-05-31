@@ -43,7 +43,7 @@
 		},
 		{ name: 'score', sortBy: 'score' },
 		{ name: 'rating', sortBy: 'rating' },
-		{ name: 'clear', sortBy: 'aj', hidden: $_page === 'current' },
+		{ name: 'clear', sortBy: 'aj', hidden: $_page === 'new' },
 		{
 			name: 'play_count',
 			sortBy: 'playCount',
@@ -98,8 +98,8 @@
 			</tr>
 		</thead>
 	{/snippet}
-	{#snippet vl_slot({ item })}
-		<RecordTableItem record={item} />
+	{#snippet vl_slot({ item, index })}
+		<RecordTableItem record={item} ind={index} />
 	{/snippet}
 </VirtualList>
 

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { opScale, ranks } from '$lib/chuninet/rating'
-	import { Genre, genres, versionId2Name } from '$lib/chuninet/song'
+	import { Genre, genres, versionId2Name, versionId } from '$lib/chuninet/song'
 	import NotificationPopup from '$lib/components/NotificationPopup.svelte'
 	import ProgressBar from '$lib/components/ProgressBar.svelte'
 	import { m } from '$lib/paraglide/messages'
 	import { saveResultAsPicture } from '$lib/share'
 	import type { EventHandler } from 'svelte/elements'
-	import { derived } from 'svelte/store'
+	import { derived, readable } from 'svelte/store'
 	import { _page } from './+page'
 	import {
 		allFetched,
@@ -33,7 +33,7 @@
 
 	const routeChange: EventHandler<HashChangeEvent, Window> = (event) => {
 		$_page = (new URL(event.newURL).hash.slice(1) as typeof $_page) || 'best'
-		if (!['best', 'current', 'recent', 'old'].includes($_page)) {
+		if (!['best', 'new', 'recent', 'old'].includes($_page)) {
 			$_page = 'best'
 		}
 	}
@@ -75,14 +75,18 @@
 					record.const + 0.05 > $filterConstMin
 			)
 	)
+
+	const new20 = derived([filteredBestRecord], ([$filteredBestRecord]) => 
+		$filteredBestRecord.filter((record) => record.version == Math.max.apply(null, Object.values(versionId)))
+	);
 	
 	const old30 = derived([filteredBestRecord], ([$filteredBestRecord]) => 
-		$filteredBestRecord.filter((record) => !$recentRecord.map(record => record.title).includes(record.title))
+		$filteredBestRecord.filter((record) => record.version != Math.max.apply(null, Object.values(versionId)))
 	);
 	
 	const shownRecordsMap = {
 		'best': filteredBestRecord,
-		'current': recentRecord,
+		'new': new20,
 		'recent': playHistory,
 		'old': old30,
 	}
@@ -201,13 +205,13 @@
 			{m['viewer.tabs.best']()}
 		</h4>
 	</a>
-	<a id="current" href="#current" class="!decoration-none !no-underline">
+	<a id="new" href="#new" class="!decoration-none !no-underline">
 		<h4
 			class="!mb-0"
-			class:!text-textc-normal={$_page === 'current'}
-			class:!text-textc-dim={$_page !== 'current'}
+			class:!text-textc-normal={$_page === 'new'}
+			class:!text-textc-dim={$_page !== 'new'}
 		>
-			{m['viewer.tabs.current']()}
+			{m['viewer.tabs.new']()}
 		</h4>
 	</a>
 	<!-- <a id="recent" href="#recent" class="!decoration-none !no-underline">

@@ -7,7 +7,7 @@
 	import { forceUpdaterForPlayCount } from './fetched'
 	import { showOverPower, showPlayCount } from './preference'
 
-	let { record }: { record: ParsedRecord } = $props()
+	let { record, ind }: { record: ParsedRecord, ind: any } = $props()
 
 	function rankColor(score: number): string {
 		if (score >= ranksMap['SSS']) return 'rank-sss'
@@ -36,11 +36,19 @@
 
 <tr class="gap-2 border-t border-bgc-accent" class:ajc={record.score >= 1010000}>
 	<!-- Order by Rating -->
-	<td
-		class:text-rank-sss={record.order <= 30}
-		class:text-textc-muted={record.order > 40}>
-		{record.order}
-	</td>
+	{#if $_page === 'new'}
+		<td
+			class:text-rank-sss={ind+1 <= 20}
+			class:text-textc-muted={ind+1 > 30}>
+			{ind+1}
+		</td>
+	{:else}
+		<td
+			class:text-rank-sss={ind+1 <= 30}
+			class:text-textc-muted={ind+1 > 40}>
+			{ind+1}
+		</td>
+	{/if}
 
 	<!-- Song Title -->
 	<td
@@ -100,14 +108,12 @@
 	</td>
 
 	<!-- Clear -->
-	{#if $_page !== 'current'}
-		<td
-			class="ajc-glow font-bold"
-			class:text-clear-fc={record.clear == 'FC'}
-			class:text-clear-aj={record.clear == 'AJ'}>
-			{record.clear}
-		</td>
-	{/if}
+	<td
+		class="ajc-glow font-bold"
+		class:text-clear-fc={record.clear == 'FC'}
+		class:text-clear-aj={record.clear == 'AJ'}>
+		{record.clear}
+	</td>
 
 	<!-- Play Count -->
 	{#if $showPlayCount && $_page === 'best'}
