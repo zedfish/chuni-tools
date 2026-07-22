@@ -9,7 +9,7 @@ const env = loadEnv(process.env.ENV!, process.cwd(), '');
 export const viteDefine = {
 	__ENV__: JSON.stringify(process.env.ENV || 'development'),
 	__INTL_VERSION__: JSON.stringify('xversex'),
-	__JP_VERSION__: JSON.stringify('xversex'),
+	__JP_VERSION__: JSON.stringify('mate'),
 	__APP_VERSION__: JSON.stringify(process.env.npm_package_version),
     __HOST__: JSON.stringify(env.VITE_HOST),
     __PORT__: Number(env.VITE_PORT),

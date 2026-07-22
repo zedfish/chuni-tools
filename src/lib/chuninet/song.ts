@@ -45,7 +45,8 @@ export const versionId = {
 	'LUMINOUS+': 18,
 	VERSE: 19,
 	XVERSE: 20,
-	XVERSEX: 21
+	XVERSEX: 21,
+	MATE: 22
 }
 export const versionId2Name = Object.fromEntries(
 	Object.entries(versionId).map(([k, v]) => [v, k])

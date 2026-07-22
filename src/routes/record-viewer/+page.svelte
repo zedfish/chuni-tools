@@ -28,6 +28,7 @@
 	} from './preference'
 	import RecordTable from './RecordTable.svelte'
 	import Settings from './Settings.svelte'
+	import { currentVersionId } from './preference'
 
 	let settingsRef = $state<Settings>()
 
@@ -77,11 +78,11 @@
 	)
 
 	const new20 = derived([filteredBestRecord], ([$filteredBestRecord]) => 
-		$filteredBestRecord.filter((record) => record.version == Math.max.apply(null, Object.values(versionId)))
+		$filteredBestRecord.filter((record) => record.version == $currentVersionId)
 	);
 	
 	const old30 = derived([filteredBestRecord], ([$filteredBestRecord]) => 
-		$filteredBestRecord.filter((record) => record.version != Math.max.apply(null, Object.values(versionId)))
+		$filteredBestRecord.filter((record) => record.version != $currentVersionId)
 	);
 	
 	const shownRecordsMap = {

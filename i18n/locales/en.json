@@ -12,7 +12,8 @@
 			"luminousplus": "LUMINOUS+",
 			"verse": "VERSE",
 			"xverse": "X-VERSE",
-			"xversex": "X-VERSE-X"
+			"xversex": "X-VERSE-X",
+			"mate": "MATE"
 		},
 		"ui": {
 			"multi_select": { "select_all": "Select All", "deselect_all": "Deselect All" }
